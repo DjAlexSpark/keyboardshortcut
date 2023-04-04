@@ -5,6 +5,7 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 public class Main implements NativeKeyListener {
@@ -16,11 +17,11 @@ public class Main implements NativeKeyListener {
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent nativeEvent) {
-        String na = null;
-        na =NativeKeyEvent.getKeyText(nativeEvent.getKeyCode());
+        String listenedKey = null;
+        listenedKey =NativeKeyEvent.getKeyText(nativeEvent.getKeyCode());
         System.out.println(NativeKeyEvent.getKeyText(nativeEvent.getKeyCode()));
 
-        if(na=="Down"){
+        if(listenedKey=="Down"){
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_A);
             robot.keyRelease(KeyEvent.VK_A);
@@ -29,13 +30,21 @@ public class Main implements NativeKeyListener {
             robot.keyRelease(KeyEvent.VK_CONTROL);
 
         }
-        if(na=="Up"){
+        if(listenedKey=="Up"){
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_A);
             robot.keyRelease(KeyEvent.VK_A);
             robot.keyPress(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_V);
             robot.keyRelease(KeyEvent.VK_CONTROL);
+//            Robot robot = new Robot();
+//            robot.mouseMove(305, 450);
+//// first click
+//            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+//// second click
+//            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         }
     }
 
